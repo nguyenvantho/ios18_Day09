@@ -28,5 +28,31 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (void) viewDidLayoutSubviews
+{
+    UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
+    NSLog(@"orientation:  state: % i", deviceOrientation);
+    
+   
+    if(UIDeviceOrientationIsPortrait(deviceOrientation)){
+        
+        self.firstImage.center = CGPointMake(self.centerImage.center.x,
+                                             self.centerImage.center.y /2);
+        
+        self.lastImage.center = CGPointMake(self.centerImage.center.x,
+                                            3 * self.centerImage.center.y /2);
+    }else{
+        self.firstImage.center = CGPointMake(self.centerImage.center.x / 2,
+                                             self.centerImage.center.y);
+        
+        self.lastImage.center = CGPointMake(self.centerImage.center.x * 3 /2,
+                                             self.centerImage.center.y);
+    }
+
+    
+}
+
+
+
 
 @end
